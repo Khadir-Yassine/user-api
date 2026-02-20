@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const validateUser = require("../middleware/validateUser");
+const auth = require("../middleware/auth");
 
 const {
   getAllUsers,
@@ -11,7 +12,7 @@ const {
 } = require("../controllers/usersController");
 
 // GET /users
-router.get("/", getAllUsers);
+router.get("/", auth, getAllUsers);
 
 // GET /users/:id
 router.get("/:id", getUserById);
